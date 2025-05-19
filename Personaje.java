@@ -7,14 +7,16 @@ public abstract class Personaje {
     protected boolean estaVivoONo;
     protected char inicial_personaje;
     protected Posicion posicion_personaje;
+    protected String orientacion_personaje;
 
     //Constructor
-    public Personaje(String nombre_personaje, int vida_personaje, boolean estaVivoONo, char inicial_personaje, Posicion posicion_personaje) {    
+    public Personaje(String nombre_personaje, int vida_personaje, boolean estaVivoONo, char inicial_personaje, Posicion posicion_personaje, String orientacion_personaje) {    
         this.nombre_personaje = nombre_personaje;
         this.vida_personaje = vida_personaje;
         this.estaVivoONo = estaVivoONo;
         this.inicial_personaje = inicial_personaje;
-        this.posicion_personaje = posicion_personaje;
+        this.posicion_personaje = new Posicion(posicionX, posicionY);
+        this.orientacion_personaje = orientacion;
     }
 
     //Getters and setters
@@ -58,8 +60,27 @@ public abstract class Personaje {
     public void setPosicion_personaje(Posicion posicion_personaje) {
         this.posicion_personaje = posicion_personaje;
     }
+     public String getOrientacion_personaje() {
+        return orientacion_personaje;
+    }
+    public void setOrientacion_personaje(String orientacion_personaje) {
+        this.orientacion_personaje = orientacion_personaje;
+    }
     
     
     //Metodos
+    //metodo saludar
+ public String saludar() {
+        return "Hola, soy " + this.getNombre_personaje() + "!";
+    }
+//Metodo caminar
+    public void caminar() {
+        if (this.orientacion.equals("Derecha")) {
+            this.posicion.avanzar();
+        } else {
+            this.posicion.retroceder();
+        }
+    }
+    
     public abstract void mover();
 }
