@@ -28,5 +28,17 @@ public class Posicion {
         this.jugadorEnPosicionN = jugadorEnPosicionN;
         this.jugarorEnPosicionM = jugarorEnPosicionM;
     }
-
+//metodo avanzar()
+    public void avanzar(){
+        this.jugadorEnPosicionN++;
+    }
+//Metodo retroceder()
+     public void retroceder(){
+        this.jugadorEnPosicionN--;
+    }
+    @Override
+    public String toString() {
+        return "(" + jugadorEnPosicionN + "," + jugadorEnPosicionN + ").";
+    }
+    
 }
