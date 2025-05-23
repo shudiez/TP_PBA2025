@@ -1,5 +1,6 @@
 package tp1_pba;
 
+//Jugador, hereda de Personaje
 public class Snake extends Personaje {
 
     //Atributos 
@@ -14,7 +15,6 @@ public class Snake extends Personaje {
     }
 
     //getters and setters
-
     public boolean TarjetaDeAcceso() {
         return tarjetaDeAcceso;
     }
@@ -30,11 +30,15 @@ public class Snake extends Personaje {
     public void setExploxivo_C4(boolean exploxivo_C4) {
         this.exploxivo_C4 = exploxivo_C4;
     }
-    
-    
+
     //metodo
+    public void usarExploxivo_C4() {
+        //cargar codigo
+    }
+
     @Override
     public void mover() {
-//Falta armar
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
 }
