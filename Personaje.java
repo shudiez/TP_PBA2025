@@ -60,5 +60,7 @@ public abstract class Personaje {
     }
 
     //Metodos
-    public abstract void mover();
+    //metodo abstracto mover. Todos los personajes van a tenerlo
+    public abstract void mover(string direccion);
+    
 }
