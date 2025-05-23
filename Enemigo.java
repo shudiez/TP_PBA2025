@@ -1,9 +1,7 @@
 package tp1_pba;
 
+//Interfaz para comportamiento de enemigos
 public interface Enemigo {
 
-    public void patrullar(char[][] mapa); //Patrullar el mapa
-
-    public boolean capturar(int jugadorEnPosicionN, int jugadorEnPosicionM);
 
 }
