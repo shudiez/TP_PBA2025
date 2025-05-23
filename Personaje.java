@@ -1,86 +1,64 @@
 package tp1_pba;
 
+//Clase abstracta: Base para todos los personajes
 public abstract class Personaje {
 
-    protected String nombre_personaje;
-    protected int vida_personaje;
-    protected boolean estaVivoONo;
-    protected char inicial_personaje;
-    protected Posicion posicion_personaje;
-    protected String orientacion_personaje;
+    protected String nombre;
+    protected int vida;
+    protected boolean estaVivo;
+    protected char inicial;
+    protected Posicion posicion;
 
     //Constructor
-    public Personaje(String nombre_personaje, int vida_personaje, boolean estaVivoONo, char inicial_personaje, Posicion posicion_personaje, String orientacion_personaje) {    
-        this.nombre_personaje = nombre_personaje;
-        this.vida_personaje = vida_personaje;
-        this.estaVivoONo = estaVivoONo;
-        this.inicial_personaje = inicial_personaje;
-        this.posicion_personaje = new Posicion(posicionX, posicionY);
-        this.orientacion_personaje = orientacion;
+    public Personaje(String nombre, int vida, boolean estaVivo, char inicial, Posicion posicion) {
+        this.nombre = nombre;
+        this.vida = vida;
+        this.estaVivo = estaVivo;
+        this.inicial = inicial;
+        this.posicion = posicion;
     }
 
     //Getters and setters
-
-    public String getNombre_personaje() {
-        return nombre_personaje;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombre_personaje(String nombre_personaje) {
-        this.nombre_personaje = nombre_personaje;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public int getVida_personaje() {
-        return vida_personaje;
+    public int getVida() {
+        return vida;
     }
 
-    public void setVida_personaje(int vida_personaje) {
-        this.vida_personaje = vida_personaje;
+    public void setVida(int vida) {
+        this.vida = vida;
     }
 
-    public boolean isEstaVivoONo() {
-        return estaVivoONo;
+    public boolean isEstaVivo() {
+        return estaVivo;
     }
 
-    public void setEstaVivoONo(boolean estaVivoONo) {
-        this.estaVivoONo = estaVivoONo;
+    public void setEstaVivo(boolean estaVivo) {
+        this.estaVivo = estaVivo;
     }
 
-    public char getInicial_personaje() {
-        return inicial_personaje;
+    public char getInicial() {
+        return inicial;
     }
 
-    public void setInicial_personaje(char inicial_personaje) {
-        this.inicial_personaje = inicial_personaje;
+    public void setInicial(char inicial) {
+        this.inicial = inicial;
     }
 
-    public Posicion getPosicion_personaje() {
-        return posicion_personaje;
+    public Posicion getPosicion() {
+        return posicion;
     }
 
-    public void setPosicion_personaje(Posicion posicion_personaje) {
-        this.posicion_personaje = posicion_personaje;
+    public void setPosicion(Posicion posicion) {
+        this.posicion = posicion;
     }
-     public String getOrientacion_personaje() {
-        return orientacion_personaje;
-    }
-    public void setOrientacion_personaje(String orientacion_personaje) {
-        this.orientacion_personaje = orientacion_personaje;
-    }
-    
-    
+
     //Metodos
-    //metodo saludar
- public String saludar() {
-        return "Hola, soy " + this.getNombre_personaje() + "!";
-    }
-//Metodo caminar
-    public void caminar() {
-        if (this.orientacion.equals("Derecha")) {
-            this.posicion.avanzar();
-        } else {
-            this.posicion.retroceder();
-        }
-    }
-    
     public abstract void mover();
 }
