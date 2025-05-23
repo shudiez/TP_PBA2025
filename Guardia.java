@@ -4,16 +4,16 @@ package tp1_pba;
 public class Guardia extends Personaje implements Enemigo {
 
     //Constructor
-    public Guardia(String nombre_personaje, int vida_personaje, boolean estaVivo, char inicial_personaje, Posicion posicion_personaje) {
-        super(nombre_personaje, vida_personaje, estaVivo, inicial_personaje, posicion_personaje);
+    public Guardia(Posicion posicion){
+        super("Guardia",posicion);
     }
 
     //Metodos
     @Override
-    public void mover() {
+    public void mover(string direccion) {
         //Falta cargar
     }
-    /*
+    
     @Override
     public void patrullar() {
 //falta cargar
@@ -23,5 +23,5 @@ public class Guardia extends Personaje implements Enemigo {
     public void atacar() {
 //falta cargar
     }
-     */
+     
 }
