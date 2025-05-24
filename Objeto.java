@@ -1,9 +1,27 @@
 package tp1_pba;
 
-public class Item {
+public class Objeto {
 
-  String llave;
-  String puertaHangar;
+    String tipo;
+    // String llave;
+    // String puertaHangar;
 
+    //Constructor
+    public Objeto(String tipo) {
+        this.tipo = tipo;
 
+    }
+
+    //Getters and setters
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    //Metodos
+    public void recoger() {
+    }
 }
