@@ -2,23 +2,28 @@ package tp1_pba;
 
 public class Objeto {
 
-    String tipo;
-    // String llave;
-    // String puertaHangar;
+    private String tipo;
+    private Posicion posicion;
+    private char inicial;
 
     //Constructor
-    public Objeto(String tipo) {
+    public Objeto(String tipo, Posicion posicion, char inicial) {
         this.tipo = tipo;
-
+        this.posicion = posicion;
+        this.inicial = inicial;
     }
 
-    //Getters and setters
+    //Getters 
     public String getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public Posicion getPosicion() {
+        return posicion;
+    }
+
+    public char getInicial() {
+        return inicial;
     }
 
     //Metodos
