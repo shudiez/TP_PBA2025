@@ -5,24 +5,17 @@ public abstract class Mision {
 
 //Atributos
     protected boolean completa;
-    protected String nombre;
 
 //Constructor
-    public Mision(String nombre) {
-        this.nombre = nombre;
+    public Mision(boolean completa) {
         this.completa = false;
     }
 
-//Getter
-    public String getNombre() {
-        return nombre;
-    }
-
-//Metodo para iniciar
-    public abstract boolean iniciar(Snake snake);
-
-    public boolean estaCompleta() {
+    //Getter
+    public boolean isCompleta() {
         return completa;
     }
 
+//Metodos
+    public abstract void iniciar(Snake snake, Mapa mapa);
 }
