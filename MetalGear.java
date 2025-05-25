@@ -1,31 +1,35 @@
 package tp1_pba;
 
 //Enemigo final, hereda de Personaje e implementa Enemigo
+import java.util.Random;
+
 public class MetalGear extends Personaje implements Enemigo {
 
-    //Constructor
-    public MetalGear(String nombre_personaje, int vida_personaje, boolean estaVivo, char inicial_personaje, Posicion posicion_personaje) {
-        super(nombre_personaje, vida_personaje, estaVivo, inicial_personaje, posicion_personaje);
+    //Constructor     
+    public MetalGear(String nombre, int vida, char inicial, Posicion posicion) {
+        super("REX", 100, 'M', new Posicion(0, 0));
     }
 
     //Metodos que implementa de la clase abstacta Enemigo
-    @Override
-    public void mover() {
-//falta cargar
-    }
-
-    public void patrullar() {
-//falta cargar
-    }
-
     public void atacar() {
-//falta cargar
+
+        Random random = new Random();
+        //esto va a hacer un daño aleatorio entre 15 y 40 a Rex
+        int danio = random.nextInt(40 - 15 + 1) + 15;
+
     }
 
-    boolean estaVivo() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    @Override
+    public void mover(String direccion, Mapa mapa) {
     }
 
-  
+    @Override
+    public void patrullar(Mapa mapa) {
+    }
+
+    @Override
+    public boolean detectarSnake(Snake snake) {
+        return true;
+    }
 
 }
