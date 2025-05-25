@@ -5,54 +5,45 @@ public abstract class Personaje {
 
     protected String nombre;
     protected int vida;
-    protected boolean estaVivo;
     protected char inicial;
     protected Posicion posicion;
 
     //Constructor
-    public Personaje(String nombre, int vida, boolean estaVivo, char inicial, Posicion posicion) {
+    public Personaje(String nombre, int vida, char inicial, Posicion posicion) {
         this.nombre = nombre;
-        this.vida = vida;
-        this.estaVivo = estaVivo;
+        this.vida = 100;
         this.inicial = inicial;
         this.posicion = posicion;
     }
 
-    //Getters and setters
+    //Getters
     public String getNombre() {
         return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public int getVida() {
         return vida;
     }
 
-    public void setVida(int vida) {
-        this.vida = vida;
-    }
-
-    public boolean isEstaVivo() {
-        return estaVivo;
-    }
-
-    public void setEstaVivo(boolean estaVivo) {
-        this.estaVivo = estaVivo;
-    }
-
     public char getInicial() {
         return inicial;
     }
 
-    public void setInicial(char inicial) {
-        this.inicial = inicial;
-    }
-
     public Posicion getPosicion() {
         return posicion;
+    }
+
+    //Setters
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+
+    public void setInicial(char inicial) {
+        this.inicial = inicial;
     }
 
     public void setPosicion(Posicion posicion) {
@@ -61,6 +52,17 @@ public abstract class Personaje {
 
     //Metodos
     //metodo abstracto mover. Todos los personajes van a tenerlo
-    public abstract void mover(string direccion);
-    
+    public abstract void mover(String direccion, Mapa mapa);
+
+    //METODO PARA RECIBIR DAÑO
+    public void recibirDanio(int cantidad) {
+        vida = vida - cantidad;
+        if (vida <= 0) {
+            vida = 0;
+        }
+    }
+
+    public boolean estaVivo() {
+        return vida > 0;
+    }
 }
