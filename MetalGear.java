@@ -7,7 +7,7 @@ public class MetalGear extends Personaje implements Enemigo {
 
     //Constructor     
     public MetalGear(String nombre, int vida, char inicial, Posicion posicion) {
-        super("REX", 100, 'M', new Posicion(0, 0));
+        super("REX", vida, 'M', new Posicion(0, 0));
     }
 
     //Metodos que implementa de la clase abstacta Enemigo
