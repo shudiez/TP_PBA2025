@@ -1,13 +1,14 @@
+
 public class Celda {
+
     private char contenido; // Ej: ' ', 'S', '*', 'L', 'C', etc.
     private Personaje personaje;
     private Objeto Objeto;
 
     //CONSTRUCTOR
-        public Celda(char contenido, Personaje personaje, Objeto Objeto) {
+    public Celda(char contenido) {
         this.contenido = contenido;
-        this.personaje = personaje;
-        this.Objeto = Objeto;
+
     }
 
     //GETTERS AND SETTERS
@@ -36,6 +37,8 @@ public class Celda {
     }
 
     //METODOS
-   
+    /*public boolean estaVacia() {
+        return contenido == ' ' && personaje ==  null && Objeto == null;
+    }
+     */
 }
-
