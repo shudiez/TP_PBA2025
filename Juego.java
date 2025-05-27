@@ -11,7 +11,8 @@ public class Juego {
 
         boolean salir = false;
 //Arme un menu dentro de un while que se repite hasta que el jugador ponga la opcion 4 "salir"
-        // el menú tiene 4 opciones: 1. inicia la mision. 2. muestra  el nunero de misiones conpletadas. 3. 
+        // el menú tiene 4 opciones: 1. inicia la mision. 2. muestra  el nunero de misiones conpletadas. 3. permite que el jugador cargue su progreso
+        //anterior nediante un codigo. esto se guarda en misionesConpleras. 4. sale del juego
         while (!salir) {
             System.out.println("----- MENU PRINCIPAL -----");
             System.out.println("1. Iniciar mision");
