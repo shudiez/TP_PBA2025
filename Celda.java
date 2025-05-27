@@ -37,8 +37,6 @@ public class Celda {
     }
 
     //METODOS
-    /*public boolean estaVacia() {
-        return contenido == ' ' && personaje ==  null && Objeto == null;
-    }
-     */
+   
+
 }
