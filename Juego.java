@@ -2,7 +2,7 @@
 import java.util.Scanner;
 
 public class Juego {
-
+// este atributo va a guardar las misiones que completo el jugador. Por eso arranca en 0.
     private int misionesCompletas = 0;
 
     public void mostrarMenu() {
