@@ -1,32 +1,19 @@
-package tp1_pba;
-
 public class Objeto {
-
-    private String tipo;
-    private Posicion posicion;
+    private String nombre;
     private char inicial;
 
-    //Constructor
-    public Objeto(String tipo, Posicion posicion, char inicial) {
-        this.tipo = tipo;
-        this.posicion = posicion;
+    //CONSTRUCTOR
+    public Objeto(String nombre, char inicial) {
+        this.nombre = nombre;
         this.inicial = inicial;
     }
 
-    //Getters 
-    public String getTipo() {
-        return tipo;
+    //GETTERS 
+    public String getNombre() {
+        return nombre;
     }
 
-    public Posicion getPosicion() {
-        return posicion;
-    }
-
-    public char getInicial() {
+    public char getinicial() {
         return inicial;
-    }
-
-    //Metodos
-    public void recoger() {
     }
 }
