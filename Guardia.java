@@ -13,22 +13,22 @@ public class Guardia extends Personaje implements Enemigo {
     public void patrullar(Mapa mapa) {
         Random rand = new Random();
         int direccion = rand.nextInt(4); // 0=arriba, 1=abajo, 2=izq, 3=der
-        String dir = "";
+        String direc = "";
 
         if (direccion == 0) {
-            dir = "arriba";
+            direc = "arriba";
         }
         if (direccion == 1) {
-            dir = "abajo";
+            direc = "abajo";
         }
         if (direccion == 2) {
-            dir = "izq";
+            direc = "izq";
         }
         if (direccion == 3) {
-            dir = "der";
+            direc = "der";
         }
 
-        mapa.moverPersonaje(this, dir);
+        mapa.moverPersonaje(this, direc);
     }
 
     @Override
