@@ -4,10 +4,10 @@ public class Celda {
     private Objeto Objeto;
 
     //CONSTRUCTOR
-    public Celda(char contenido) {
+        public Celda(char contenido, Personaje personaje, Objeto Objeto) {
         this.contenido = contenido;
-        this.personaje = null;
-        this.Objeto = null;
+        this.personaje = personaje;
+        this.Objeto = Objeto;
     }
 
     //GETTERS AND SETTERS
