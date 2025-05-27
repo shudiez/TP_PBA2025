@@ -1,35 +1,40 @@
-package tp1_pba;
-
-//Enemigo final, hereda de Personaje e implementa Enemigo
 import java.util.Random;
 
 public class MetalGear extends Personaje implements Enemigo {
-
-    //Constructor     
-    public MetalGear(String nombre, int vida, char inicial, Posicion posicion) {
-        super("REX", vida, 'M', new Posicion(0, 0));
+   
+    //CONSTRUCTOR
+    public MetalGear(Posicion posicion) {
+        super("Metal Gear REX", 100, 'M', posicion);
     }
 
-    //Metodos que implementa de la clase abstacta Enemigo
-    public void atacar() {
-
-        Random random = new Random();
-        //esto va a hacer un daño aleatorio entre 15 y 40 a Rex
-        int danio = random.nextInt(40 - 15 + 1) + 15;
-
-    }
-
-    @Override
-    public void mover(String direccion, Mapa mapa) {
-    }
-
+    //METODOS
     @Override
     public void patrullar(Mapa mapa) {
+        // No patrulla, es fijo
     }
 
     @Override
     public boolean detectarSnake(Snake snake) {
-        return true;
+        // No se usa en la batalla final
+        return false;
     }
 
+    @Override
+    public void atacar(Snake snake) {
+        Random rand = new Random();
+        int danio = rand.nextInt(26) + 15; // 15 a 40
+        snake.recibirDanio(danio);
+    }
+
+    public void recibirDanio(int danio) {
+        this.vida = this.vida - danio;
+        if (this.vida < 0) {
+            this.vida = 0;
+        }
+    }
+
+    @Override
+    public void mover(Mapa mapa, String direccion) {
+        //No se mueve, es fijo
+    }
 }
