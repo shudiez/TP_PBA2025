@@ -18,8 +18,8 @@ public class MisionIntermedia extends Mision {
         if (numero == 1) {
             // Misión 1: SOLO llave y puerta
             mapa.getCelda(2, 4).setObjeto(new Objeto("Tarjeta", 'L'));
-            mapa.getCelda(2, 4).setContenido('L');
-            mapa.getCelda(0, 6).setContenido('H'); // Puerta
+            mapa.getCelda(2, 4).setInicial('L');
+            mapa.getCelda(0, 6).setInicial('H'); // Puerta
             // Inicializar mapa, colocar Snake, enemigos y tarjeta (L)
             mapa.colocarPersonaje(snake, snake.getPosicion());
 
@@ -34,10 +34,10 @@ public class MisionIntermedia extends Mision {
             // Colocar llave (tarjeta) en una celda específica
             Objeto llave = new Objeto("Tarjeta", 'L');
             mapa.getCelda(2, 4).setObjeto(llave);
-            mapa.getCelda(2, 4).setContenido('L');
+            mapa.getCelda(2, 4).setInicial('L');
 
             // Colocar puerta de salida (hangar) en (0, 6)
-            mapa.getCelda(0, 6).setContenido('H');
+            mapa.getCelda(0, 6).setInicial('H');
 
             boolean tieneLlave = false;
             boolean capturado = false;
@@ -57,7 +57,7 @@ public class MisionIntermedia extends Mision {
                     tieneLlave = true;
                     System.out.println("¡Agarraste la llave!");
                     celdaActual.setObjeto(null);
-                    celdaActual.setContenido(' '); // La celda queda vacía para futuros movimientos
+                    celdaActual.setInicial(' '); // La celda queda vacía para futuros movimientos
                 }
                 // Revisar si llegó a la puerta con la tarjeta
                 if (snake.getPosicion().getX() == 0 && snake.getPosicion().getY() == 6 && tieneLlave) {
@@ -82,8 +82,8 @@ public class MisionIntermedia extends Mision {
         if (numero == 2) {
             // Misión 2: SOLO explosivo C4 y puerta
             mapa.getCelda(4, 5).setObjeto(new Objeto("C4", 'C'));
-            mapa.getCelda(4, 5).setContenido('C');
-            mapa.getCelda(0, 7).setContenido('P'); // Puerta, ajustá la posición si querés
+            mapa.getCelda(4, 5).setInicial('C');
+            mapa.getCelda(0, 7).setInicial('P'); // Puerta, ajustá la posición si querés
 
             mapa.colocarPersonaje(snake, snake.getPosicion());
 
@@ -114,11 +114,11 @@ public class MisionIntermedia extends Mision {
                     tieneC4 = true;
                     System.out.println("¡Agarraste el C4!");
                     celdaActual.setObjeto(null);
-                    celdaActual.setContenido(' ');
+                    celdaActual.setInicial(' ');
                 }
                 // Revisar si llegó a la puerta con el C4
                 if (snake.getPosicion().getX() == 0 && snake.getPosicion().getY() == 7 && tieneC4) {
-                    System.out.println("Llegaste a la puerta con el C4. ¡Misión completada!");
+                    System.out.println("Llegaste a la puerta con el C4. ¡Mision completada!");
                     completada = true;
                 }
                 // Mueven los guardias y verifican si capturan a Snake
@@ -126,12 +126,12 @@ public class MisionIntermedia extends Mision {
                     guardias[i].patrullar(mapa);
                     if (guardias[i].detectarSnake(snake)) {
                         capturado = true;
-                        System.out.println("Un guardia te vio! Misión fallida.");
+                        System.out.println("Un guardia te vio! Mision fallida.");
                     }
                 }
             }
             if (completada) {
-                System.out.println("¡Misión completada!");
+                System.out.println("¡Mision completa!");
             } else if (capturado) {
                 System.out.println("Intentalo de nuevo.");
             }
