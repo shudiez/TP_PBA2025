@@ -1,16 +1,16 @@
 public class Objeto {
-    private String nombre;
+    private String tipo;
     private char inicial;
 
     //CONSTRUCTOR
-    public Objeto(String nombre, char inicial) {
-        this.nombre = nombre;
+    public Objeto(String tipo, char inicial) {
+        this.tipo = tipo;
         this.inicial = inicial;
     }
 
     //GETTERS 
-    public String getNombre() {
-        return nombre;
+    public String getTipo() {
+        return tipo;
     }
 
     public char getinicial() {
