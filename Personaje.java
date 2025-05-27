@@ -1,22 +1,18 @@
-package tp1_pba;
-
-//Clase abstracta: Base para todos los personajes
 public abstract class Personaje {
-
     protected String nombre;
     protected int vida;
-    protected char inicial;
     protected Posicion posicion;
+    protected char inicial;
 
-    //Constructor
+    //CONSTRUCTOR
     public Personaje(String nombre, int vida, char inicial, Posicion posicion) {
         this.nombre = nombre;
-        this.vida = 100;
+        this.vida = vida;
         this.inicial = inicial;
         this.posicion = posicion;
     }
 
-    //Getters
+    //GETTERS AND SETTERS
     public String getNombre() {
         return nombre;
     }
@@ -25,7 +21,11 @@ public abstract class Personaje {
         return vida;
     }
 
-    public char getInicial() {
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+
+    public char getinicial() {
         return inicial;
     }
 
@@ -33,36 +33,15 @@ public abstract class Personaje {
         return posicion;
     }
 
-    //Setters
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setVida(int vida) {
-        this.vida = vida;
-    }
-
-    public void setInicial(char inicial) {
-        this.inicial = inicial;
-    }
-
     public void setPosicion(Posicion posicion) {
         this.posicion = posicion;
     }
 
-    //Metodos
-    //metodo abstracto mover. Todos los personajes van a tenerlo
-    public abstract void mover(String direccion, Mapa mapa);
-
-    //METODO PARA RECIBIR DAÑO
-    public void recibirDanio(int cantidad) {
-        vida = vida - cantidad;
-        if (vida <= 0) {
-            vida = 0;
-        }
-    }
+    //METODOS
+    public abstract void mover(Mapa mapa, String direccion);
 
     public boolean estaVivo() {
         return vida > 0;
     }
 }
+
