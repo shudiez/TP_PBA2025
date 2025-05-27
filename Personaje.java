@@ -1,16 +1,22 @@
+
 public abstract class Personaje {
+
     protected String nombre;
     protected int vida;
     protected Posicion posicion;
-    protected char inicial;
+//    protected char inicial;
 
     //CONSTRUCTOR
-    public Personaje(String nombre, int vida, char inicial, Posicion posicion) {
+    public Personaje(String nombre, int vida, Posicion posicion) {
         this.nombre = nombre;
         this.vida = vida;
-        this.inicial = inicial;
         this.posicion = posicion;
     }
+
+    //constructor vacio
+    public Personaje() {
+    }
+    
 
     //GETTERS AND SETTERS
     public String getNombre() {
@@ -23,10 +29,6 @@ public abstract class Personaje {
 
     public void setVida(int vida) {
         this.vida = vida;
-    }
-
-    public char getinicial() {
-        return inicial;
     }
 
     public Posicion getPosicion() {
@@ -44,4 +46,3 @@ public abstract class Personaje {
         return vida > 0;
     }
 }
-
