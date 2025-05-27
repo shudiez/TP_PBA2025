@@ -2,7 +2,7 @@ public class Snake extends Personaje {
     
     //CONSTRUCTOR
     public Snake(Posicion posicion) {
-        super("Snake", 100, 'S', posicion);
+        super("Snake", 100,  posicion);
     }
 
     //METODOS
