@@ -1,55 +1,39 @@
-package tp1_pba;
-
 import java.util.Random;
 import java.util.Scanner;
 
 public class MisionFinal extends Mision {
-
-    //Constructor
-    public MisionFinal(boolean completa) {
-        super(completa);
-    }
-
+   
+    //METODOS
     @Override
     public void iniciar(Snake snake, Mapa mapa) {
-
-        Scanner scanner = new Scanner(System.in);
-
+        MetalGear rex = new MetalGear(new Posicion(0, 0));
+        Scanner scanner = new    Scanner (System.in);
+        Random rand = new Random();
         System.out.println("¡Metal Gear REX aparece!");
-        while (snake.estaVivo() && rex.estaVivo()) {
-            System.out.println("Tu vida: " + snake.getVida() + "HP" + " | Vida de REX: " + rex.getVida() + "HP");
-            System.out.println("1 - Disparar misil");
-            System.out.println("2 - Esquivar");
-            String opcion = scanner.nextLine();
-
-            if (opcion.equals("1")) {
-
-                Random random = new Random();
-
-                //esto va a hacer un daño aleatorio entre 10 y 30 a Rex
-                int danio = random.nextInt(30 - 10 + 1) + 10;
+        while (snake.getVida() > 0 && rex.getVida() > 0) {
+            System.out.println("Tu vida: " + snake.getVida() + " | Vida de REX: " + rex.getVida());
+            System.out.println("Turno de Snake:");
+            System.out.println("1 - Disparar misil\n2 - Esquivar");
+            int opcion = scanner.nextInt();
+            if (opcion == 1) {
+                int danio = rand.nextInt(21) + 10; // 10 a 30
                 rex.recibirDanio(danio);
-                System.out.println("¡Le diste a REX! -" + danio + " HP");
-                System.out.println("Vida de REX: " + rex.getVida() + "HP");
-            } else if (opcion.equals("2")) {
-                int danio = rex.atacar() / 2;
-                snake.recibirDanio(danio);
-                System.out.println("¡Esquivaste! Daño reducido a " + danio);
+                System.out.println("¡Le diste a REX! (-" + danio + " HP)");
+            } else {
+                System.out.println("¡Esquivaste! Daño reducido.");
             }
-
-            if (rex.estaVivo()) {
-                int ataque = rex.atacar();
-                snake.recibirDanio(ataque);
-                System.out.println("Metal Gear ataca con un Cañón Láser! -" + ataque + " HP");
+            if (rex.getVida() > 0) {
+                int danioRex = rand.nextInt(26) + 15;
+                if (opcion == 2) danioRex = danioRex / 2;
+                snake.recibirDanio(danioRex);
+                System.out.println("¡Metal Gear ataca! (-" + danioRex + " HP)");
             }
         }
-
-        if (snake.estaVivo()) {
-            System.out.println("¡Ganaste! REX fue destruido.");
-            completa = true;
+        if (snake.getVida() > 0) {
+            System.out.println("¡Ganaste! REX destruido.");
+            completada = true;
         } else {
-            System.out.println("Game over. Snake ha sido derrotado.");
+            System.out.println("Game Over...");
         }
     }
 }
-
