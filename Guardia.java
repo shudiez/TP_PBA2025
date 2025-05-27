@@ -1,34 +1,52 @@
-package tp1_pba;
 
-//Enemigo patrullante, hereda de Personaje e implementa Enemigo
+import java.util.Random;
+
+//CONSTRUCTOR
 public class Guardia extends Personaje implements Enemigo {
 
-    //Constructor
-    public Guardia(String nombre, int vida, char inicial, Posicion posicion) {
-        super("Guardia", vida, '*', posicion);
+    public Guardia(String nombre, Posicion posicion) {
+        super(nombre, 50, '*', posicion);
     }
 
-    //Metodos
-    @Override
-    public void mover(String direccion, Mapa mapa) {
-
-    }
-
+    //METODOS
     @Override
     public void patrullar(Mapa mapa) {
-        int x = posicion.getX();
-        int y = posicion.getY();
+        Random rand = new Random();
+        int direccion = rand.nextInt(4); // 0=arriba, 1=abajo, 2=izq, 3=der
+        String dir = "";
 
-        if (x + 1 < 7) {
-            posicion.setX(x + 1);
-        } else {
-            posicion.setX(x - 1);
+        if (direccion == 0) {
+            dir = "arriba";
         }
+        if (direccion == 1) {
+            dir = "abajo";
+        }
+        if (direccion == 2) {
+            dir = "izq";
+        }
+        if (direccion == 3) {
+            dir = "der";
+        }
+
+        mapa.moverPersonaje(this, dir);
     }
 
     @Override
     public boolean detectarSnake(Snake snake) {
-        return posicion.distancia(snake.getPosicion()) <= 1;
+        // Si Snake está a 1 bloque de distancia (horizontal o vertical)
+        int dx = Math.abs(this.posicion.getX() - snake.getPosicion().getX());
+        int dy = Math.abs(this.posicion.getY() - snake.getPosicion().getY());
+        return (dx + dy == 1);
     }
 
+    @Override
+    public void atacar(Snake snake) {
+        // Ataque simple
+        snake.recibirDanio(15);
+    }
+
+    @Override
+    public void mover(Mapa mapa, String direccion) {
+        mapa.moverPersonaje(this, direccion);
+    }
 }
