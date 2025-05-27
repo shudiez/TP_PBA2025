@@ -1,11 +1,10 @@
 
 public class Mapa {
 
-    private Celda[][] celdas;
     private int filasN;
     private int columnasM;
+    private Celda[][] celdas;
 
-    //CONSTRUCTOR
     public Mapa(int filasN, int columnasM) {
         this.filasN = filasN;
         this.columnasM = columnasM;
@@ -31,26 +30,27 @@ public class Mapa {
     }
 
     //METODOS
-    public void colocarPersonaje(Personaje p, Posicion pos) {
-        Celda celda = celdas[pos.getX()][pos.getY()];
-        celda.setPersonaje(p);
-        celda.setContenido(p.getinicial()); // SIEMPRE poner el símbolo del personaje
-        p.setPosicion(pos);
+    public void colocarPersonaje(Personaje perso, Posicion position) {
+        Celda celda = celdas[position.getX()][position.getY()];
+        celda.setPersonaje(perso);
+        celda.setInicial(celda.getInicial());
+        perso.setPosicion(position);
     }
 
-    public void moverPersonaje(Personaje p, String direccion) {
-        // 1. Sacar personaje de la celda actual y restaurar contenido si hay Objeto
-        Posicion actual = p.getPosicion();
+    public void moverPersonaje(Personaje perso, String direccion) {
+        // Saco al personaje de la celda actual y reinicio el contenido si hay un Objeto
+        Posicion actual = perso.getPosicion();
         Celda celdaActual = celdas[actual.getX()][actual.getY()];
+
         celdaActual.setPersonaje(null);
 
-        if (celdaActual.getObjeto() != null) {
-            celdaActual.setContenido(celdaActual.getObjeto().getinicial());
+        if (!celdaActual.getObjeto().getNombre().equals("")) {
+            celdaActual.setInicial(celdaActual.getObjeto().getinicial());
         } else {
-            celdaActual.setContenido(' '); // Si ya no hay ítem, dejar vacío
+            celdaActual.setInicial(' ');
         }
 
-        // 2. Calcular nueva posición
+        // Calculo nueva posicion
         int x = actual.getX();
         int y = actual.getY();
         if (direccion.equals("arriba") && x > 0) {
@@ -63,24 +63,24 @@ public class Mapa {
             y++;
         }
 
-        // 3. Mover personaje a la nueva celda
+        // Muevo al  personaje a la nueva celda
         Posicion nueva = new Posicion(x, y);
-        colocarPersonaje(p, nueva);
+        colocarPersonaje(perso, nueva);
     }
 
     public void mostrar() {
         System.out.println("----- MAPA -----");
         for (int i = 0; i < filasN; i++) {
             for (int j = 0; j < columnasM; j++) {
-                char contenido = celdas[i][j].getContenido();
-                // Si la celda está vacía, mostrá un punto para que se vea la grilla
+                char contenido = celdas[i][j].getInicial();
+                // Si la celda esta vacia, se ve un punto para que se vea la matriz
                 if (contenido == ' ') {
                     System.out.print(". ");
                 } else {
                     System.out.print(contenido + " ");
                 }
             }
-            System.out.println(); // salto de línea al final de cada fila
+            System.out.println();
         }
         System.out.println("---------------");
     }
