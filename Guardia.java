@@ -1,75 +1,87 @@
 
-import java.util.Random;
+import java.util.Scanner;
 
-//CONSTRUCTOR
-public class Guardia extends Personaje implements Enemigo {
+public class Juego {
 
-    public Guardia(String nombre, Posicion posicion) {
-        super(nombre, 50, posicion);
-    }
+    private int misionesCompletas = 0;
 
-    //METODOS
-    @Override
-    public void patrullar(Mapa mapa) {
-        Random rand = new Random();
-        int direccion = rand.nextInt(4); // 0=arriba, 1=abajo, 2=izq, 3=der
-        String direc = "";
+    public void mostrarMenu() {
 
-        if (direccion == 0) {
-            direc = "arriba";
+        Scanner scanner = new Scanner(System.in);
+
+        boolean salir = false;
+
+        while (!salir) {
+            System.out.println("----- MENU PRINCIPAL -----");
+            System.out.println("1. Iniciar mision");
+            System.out.println("2. Guardar estado");
+            System.out.println("3. Cargar estado");
+            System.out.println("4. Salir");
+
+            int opcion = scanner.nextInt();
+            if (opcion == 1) {
+
+                iniciarMision();
+
+            } else if (opcion == 2) {
+
+                System.out.println("Codigo de progreso: " + misionesCompletas);
+
+            } else if (opcion == 3) {
+
+                System.out.print("Ingresa el codigo: ");
+
+                int codigo = scanner.nextInt();
+
+                misionesCompletas = codigo;
+
+                System.out.println("Estado cargado.");
+
+            } else if (opcion == 4) {
+
+                salir = true;
+            } else {
+                System.out.println("La opcion es incorrecta.");
+            }
         }
-        if (direccion == 1) {
-            direc = "abajo";
+
+    }
+
+    private void iniciarMision() {
+        if (misionesCompletas == 0) {
+            // Mision 1
+            Mapa mapa = new Mapa(7, 7);
+            Snake snake = new Snake(new Posicion(6, 0));
+            MisionIntermedia mision1 = new MisionIntermedia(1);
+            mision1.iniciar(snake, mapa);
+            if (mision1.estaCompleta()) {
+                misionesCompletas++;
+            }
+        } else if (misionesCompletas == 1) {
+            // Mision 2
+            Mapa mapa = new Mapa(9, 9);
+            Snake snake = new Snake(new Posicion(8, 0));
+            MisionIntermedia mision2 = new MisionIntermedia(2);
+            mision2.iniciar(snake, mapa);
+            if (mision2.estaCompleta()) {
+                misionesCompletas++;
+            }
+        } else if (misionesCompletas == 2) {
+            // Misión 3
+            Snake snake = new Snake(new Posicion(0, 0));
+            Mapa mapa = new Mapa(0, 0);
+            MisionFinal mision3 = new MisionFinal();
+            mision3.iniciar(snake, mapa);
+            if (mision3.estaCompleta()) {
+                misionesCompletas++;
+            }
+        } else {
+            System.out.println("El juego ha terminado!");
         }
-        if (direccion == 2) {
-            direc = "izq";
-        }
-        if (direccion == 3) {
-            direc = "der";
-        }
-
-        mapa.moverPersonaje(this, direc);
     }
 
-    @Override
-   public boolean detectarSnake(Snake snake) {
-    // Obtener la posición del guardia (este objeto)
-    int guardiaX = this.posicion.getX();
-    int guardiaY = this.posicion.getY();
-
-    // Obtener la posición de Snake
-    int snakeX = snake.getPosicion().getX();
-    int snakeY = snake.getPosicion().getY();
-
-    // Comparar si están arriba, abajo, izquierda o derecha (uno al lado del otro)
-    // Arriba
-    if (guardiaX - 1 == snakeX && guardiaY == snakeY) {
-        return true;
-    }
-    // Abajo
-    if (guardiaX + 1 == snakeX && guardiaY == snakeY) {
-        return true;
-    }
-    // Izquierda
-    if (guardiaX == snakeX && guardiaY - 1 == snakeY) {
-        return true;
-    }
-    // Derecha
-    if (guardiaX == snakeX && guardiaY + 1 == snakeY) {
-        return true;
-    }
-    // Si no está en ninguna de esas posiciones, no lo detecta
-    return false;
-}
-
-    @Override
-    public void atacar(Snake snake) {
-        // Ataque simple
-        snake.recibirDanio(15);
-    }
-
-    @Override
-    public void mover(Mapa mapa, String direccion) {
-        mapa.moverPersonaje(this, direccion);
+    public static void main(String[] args) {
+        Juego juego = new Juego();
+        juego.mostrarMenu();
     }
 }
