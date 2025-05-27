@@ -5,7 +5,7 @@ import java.util.Random;
 public class Guardia extends Personaje implements Enemigo {
 
     public Guardia(String nombre, Posicion posicion) {
-        super(nombre, 50, '*', posicion);
+        super(nombre, 50, posicion);
     }
 
     //METODOS
@@ -32,16 +32,16 @@ public class Guardia extends Personaje implements Enemigo {
     }
 
     @Override
-     public boolean detectarSnake(Snake snake) {
-    // Dame la posicion del guardia 
+   public boolean detectarSnake(Snake snake) {
+    // Obtener la posición del guardia (este objeto)
     int guardiaX = this.posicion.getX();
     int guardiaY = this.posicion.getY();
 
-    // Dame la posicion de Snake
+    // Obtener la posición de Snake
     int snakeX = snake.getPosicion().getX();
     int snakeY = snake.getPosicion().getY();
 
-    // Comparo si estan arriba, abajo, izquierda o derecha 
+    // Comparar si están arriba, abajo, izquierda o derecha (uno al lado del otro)
     // Arriba
     if (guardiaX - 1 == snakeX && guardiaY == snakeY) {
         return true;
@@ -58,14 +58,13 @@ public class Guardia extends Personaje implements Enemigo {
     if (guardiaX == snakeX && guardiaY + 1 == snakeY) {
         return true;
     }
-    // Si no esta en ninguna de esas posiciones, no lo detecta
+    // Si no está en ninguna de esas posiciones, no lo detecta
     return false;
 }
 
-
     @Override
     public void atacar(Snake snake) {
-        
+        // Ataque simple
         snake.recibirDanio(15);
     }
 
