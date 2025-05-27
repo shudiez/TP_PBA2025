@@ -1,23 +1,23 @@
 
 public class Celda {
 
-    private char contenido; // Ej: ' ', 'S', '*', 'L', 'C', etc.
+    private char inicial; // Ej: ' ', 'S', '*', 'L', 'C', etc.
     private Personaje personaje;
     private Objeto Objeto;
 
     //CONSTRUCTOR
-    public Celda(char contenido) {
-        this.contenido = contenido;
+    public Celda(char inicial) {
+        this.inicial = inicial;
 
     }
 
     //GETTERS AND SETTERS
-    public char getContenido() {
-        return contenido;
+    public char getInicial() {
+        return inicial;
     }
 
-    public void setContenido(char contenido) {
-        this.contenido = contenido;
+    public void setInicial(char inicial) {
+        this.inicial = inicial;
     }
 
     public Personaje getPersonaje() {
@@ -37,6 +37,5 @@ public class Celda {
     }
 
     //METODOS
-   
-
+  
 }
