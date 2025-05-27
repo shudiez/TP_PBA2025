@@ -32,12 +32,36 @@ public class Guardia extends Personaje implements Enemigo {
     }
 
     @Override
-    public boolean detectarSnake(Snake snake) {
-        // Si Snake está a 1 bloque de distancia (horizontal o vertical)
-        int dx = Math.abs(this.posicion.getX() - snake.getPosicion().getX());
-        int dy = Math.abs(this.posicion.getY() - snake.getPosicion().getY());
-        return (dx + dy == 1);
+     public boolean detectarSnake(Snake snake) {
+    // Obtener la posición del guardia (este objeto)
+    int guardiaX = this.posicion.getX();
+    int guardiaY = this.posicion.getY();
+
+    // Obtener la posición de Snake
+    int snakeX = snake.getPosicion().getX();
+    int snakeY = snake.getPosicion().getY();
+
+    // Comparar si están arriba, abajo, izquierda o derecha (uno al lado del otro)
+    // Arriba
+    if (guardiaX - 1 == snakeX && guardiaY == snakeY) {
+        return true;
     }
+    // Abajo
+    if (guardiaX + 1 == snakeX && guardiaY == snakeY) {
+        return true;
+    }
+    // Izquierda
+    if (guardiaX == snakeX && guardiaY - 1 == snakeY) {
+        return true;
+    }
+    // Derecha
+    if (guardiaX == snakeX && guardiaY + 1 == snakeY) {
+        return true;
+    }
+    // Si no está en ninguna de esas posiciones, no lo detecta
+    return false;
+}
+
 
     @Override
     public void atacar(Snake snake) {
