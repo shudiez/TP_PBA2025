@@ -4,7 +4,7 @@ public class MetalGear extends Personaje implements Enemigo {
    
     //CONSTRUCTOR
     public MetalGear(Posicion posicion) {
-        super("Metal Gear REX", 100, 'M', posicion);
+        super("Metal Gear REX", 100, posicion);
     }
 
     //METODOS
