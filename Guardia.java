@@ -33,15 +33,15 @@ public class Guardia extends Personaje implements Enemigo {
 
     @Override
      public boolean detectarSnake(Snake snake) {
-    // Obtener la posición del guardia (este objeto)
+    // Dame la posicion del guardia 
     int guardiaX = this.posicion.getX();
     int guardiaY = this.posicion.getY();
 
-    // Obtener la posición de Snake
+    // Dame la posicion de Snake
     int snakeX = snake.getPosicion().getX();
     int snakeY = snake.getPosicion().getY();
 
-    // Comparar si están arriba, abajo, izquierda o derecha (uno al lado del otro)
+    // Comparo si estan arriba, abajo, izquierda o derecha 
     // Arriba
     if (guardiaX - 1 == snakeX && guardiaY == snakeY) {
         return true;
@@ -58,14 +58,14 @@ public class Guardia extends Personaje implements Enemigo {
     if (guardiaX == snakeX && guardiaY + 1 == snakeY) {
         return true;
     }
-    // Si no está en ninguna de esas posiciones, no lo detecta
+    // Si no esta en ninguna de esas posiciones, no lo detecta
     return false;
 }
 
 
     @Override
     public void atacar(Snake snake) {
-        // Ataque simple
+        
         snake.recibirDanio(15);
     }
 
