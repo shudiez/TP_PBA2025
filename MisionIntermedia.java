@@ -53,7 +53,7 @@ public class MisionIntermedia extends Mision {
 
                 // Revisar si está en la celda de la llave
                 Celda celdaActual = mapa.getCelda(snake.getPosicion().getX(), snake.getPosicion().getY());
-                if (celdaActual.getObjeto() != null && celdaActual.getObjeto().getNombre().equals("Tarjeta")) {
+                if (celdaActual.getObjeto() != null && celdaActual.getObjeto().getTipo().equals("Tarjeta")) {
                     tieneLlave = true;
                     System.out.println("¡Agarraste la llave!");
                     celdaActual.setObjeto(null);
@@ -110,7 +110,7 @@ public class MisionIntermedia extends Mision {
 
                 // Revisar si está en la celda del C4
                 Celda celdaActual = mapa.getCelda(snake.getPosicion().getX(), snake.getPosicion().getY());
-                if (celdaActual.getObjeto() != null && celdaActual.getObjeto().getNombre().equals("C4")) {
+                if (celdaActual.getObjeto() != null && celdaActual.getObjeto().getTipo().equals("C4")) {
                     tieneC4 = true;
                     System.out.println("¡Agarraste el C4!");
                     celdaActual.setObjeto(null);
