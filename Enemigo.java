@@ -1,4 +1,7 @@
-
+/*
+La interfaz Enemigo permite tener distintos tipos de enemigos (como guardias, metalGear) que se comportan distinto,
+pero todos cumplen las mismas funciones basicas como patrullar, detectar y atacar.
+*/
 public interface Enemigo {
 
     // Este metodo va a hacer que los enemigos tengan un comportamiento de patrullaje, o sea, que se muevan por el mapa de forma automatica.
