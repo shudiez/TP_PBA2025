@@ -1,10 +1,19 @@
-
+/*
+La clase Mapa es el mapa del juego, una matriz de celdas, donde ubico a los personajes, 
+objetos y todo lo que pasa en el juego.
+ */
 public class Mapa {
+//filasN y columnas sin las que determinan el tamaño del mapa 
 
     private int filasN;
     private int columnasM;
+    //celdas es una matriz  de objetos Celda 
     private Celda[][] celdas;
 
+    //CONSTRUCTOR
+    /*    Cuando creo un mapa, le digo cuantas filas y columnas va a tener.
+    Despues, inicializo cada celda vacia con un espacio (' ') para que todo arranque sin personajes ni objetos.
+     */
     public Mapa(int filasN, int columnasM) {
         this.filasN = filasN;
         this.columnasM = columnasM;
@@ -17,6 +26,7 @@ public class Mapa {
     }
 
     //GETTERS
+    //Sirven para acceder a las dimensiones del mapa y a una celda puntual. 
     public int getfilasN() {
         return filasN;
     }
@@ -30,6 +40,10 @@ public class Mapa {
     }
 
     //METODOS
+    /*
+    Este metodo pone un personaje en una celda del mapa, usando su posicion. 
+    Tambien actualiza el contenido de esa celda (setPersonaje) y la posicion del personaje (setPosicion).
+     */
     public void colocarPersonaje(Personaje perso, Posicion position) {
         Celda celda = celdas[position.getX()][position.getY()];
         celda.setPersonaje(perso);
@@ -37,20 +51,24 @@ public class Mapa {
         perso.setPosicion(position);
     }
 
+    /*
+    Este metodo mueve un personaje en el mapa hacia una direccion ("arriba", "abajo", "izq", "der").
+     */
     public void moverPersonaje(Personaje perso, String direccion) {
-        // Saco al personaje de la celda actual y reinicio el contenido si hay un Objeto
+        // Borro al personaje de su celda actual.
         Posicion actual = perso.getPosicion();
+        // Actualizo el símbolo de la celda actual si habia un objeto, deja el simbolo del objeto, si no, la deja vacia.
         Celda celdaActual = celdas[actual.getX()][actual.getY()];
 
         celdaActual.setPersonaje(null);
 
-        if (!celdaActual.getObjeto().getNombre().equals("")) {
+        if (!celdaActual.getObjeto().getTipo().equals("")) {
             celdaActual.setInicial(celdaActual.getObjeto().getinicial());
         } else {
             celdaActual.setInicial(' ');
         }
 
-        // Calculo nueva posicion
+        // Calculo nueva posicion del personaje
         int x = actual.getX();
         int y = actual.getY();
         if (direccion.equals("arriba") && x > 0) {
@@ -68,6 +86,11 @@ public class Mapa {
         colocarPersonaje(perso, nueva);
     }
 
+    /*    Este metodo imprime el mapa por consola.
+Si la celda esta vacia (' '), imprime un punto (.) para que se vea  en el mapa.
+Si no esta vacia, muestra el simbolo que haya (S, P, etc.).
+Asa podemos ver lo que esta pasando en el mapa.
+     */
     public void mostrar() {
         System.out.println("----- MAPA -----");
         for (int i = 0; i < filasN; i++) {
